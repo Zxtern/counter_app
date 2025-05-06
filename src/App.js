@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import './App.css';
-
+import Homepage from "./Homepage";
+import About from "./About";
+import Contact from './Contact';
+import { Routes, Route, Link } from 'react-router-dom';
 function App() {
   //I declared a state variable 'num' and a function 'setNum' to update the value of 'num'
   //Initial value is set to 0
@@ -9,6 +12,17 @@ function App() {
   return (
     //Main container
     <div className="app-container">
+      <nav>
+        <Link to="/" className='nav-item'>Home</Link>
+        <Link to="/about" className='nav-item'>About</Link>
+        <Link to="/contact" className='nav-item'>Contact</Link>
+      </nav>
+        <Routes>
+          <Route path="/homepage" element={<Homepage />}></Route>
+          <Route path="/about" element={<About />}></Route>
+          <Route path="/contact" element={<Contact/>}></Route>
+        </Routes>
+
       {/* Displays the current value of the 'num' variable */}
       <h1 className="counter-heading">Current Number: {num}</h1>
       
@@ -31,6 +45,7 @@ function App() {
         </button>
       </div>
     </div>
+    
   );
   
 }
